@@ -42,17 +42,32 @@
             this.dateButton = new System.Windows.Forms.CheckBox();
             this.experienceLabel = new System.Windows.Forms.Label();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.signatureName = new System.Windows.Forms.TextBox();
+            this.directionText = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.optionsLabel = new System.Windows.Forms.Label();
+            this.previewLabel = new System.Windows.Forms.Label();
+            this.previewBox = new System.Windows.Forms.TextBox();
+            this.food = new System.Windows.Forms.CheckBox();
+            this.service = new System.Windows.Forms.CheckBox();
+            this.wait = new System.Windows.Forms.CheckBox();
+            this.dirty = new System.Windows.Forms.CheckBox();
+            this.freehand = new System.Windows.Forms.CheckBox();
+            this.freehandText = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // positiveButton
             // 
-            this.positiveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.positiveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.positiveButton.AutoSize = true;
             this.positiveButton.Checked = true;
             this.positiveButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.positiveButton.ForeColor = System.Drawing.Color.White;
-            this.positiveButton.Location = new System.Drawing.Point(164, 19);
+            this.positiveButton.Location = new System.Drawing.Point(288, 84);
             this.positiveButton.Name = "positiveButton";
             this.positiveButton.Size = new System.Drawing.Size(81, 18);
             this.positiveButton.TabIndex = 12;
@@ -62,11 +77,12 @@
             // 
             // negativeButton
             // 
-            this.negativeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.negativeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.negativeButton.AutoSize = true;
             this.negativeButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.negativeButton.ForeColor = System.Drawing.Color.White;
-            this.negativeButton.Location = new System.Drawing.Point(288, 19);
+            this.negativeButton.Location = new System.Drawing.Point(412, 84);
             this.negativeButton.Name = "negativeButton";
             this.negativeButton.Size = new System.Drawing.Size(81, 18);
             this.negativeButton.TabIndex = 14;
@@ -76,45 +92,46 @@
             // 
             // serverNameButton
             // 
+            this.serverNameButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.serverNameButton.AutoSize = true;
             this.serverNameButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serverNameButton.ForeColor = System.Drawing.Color.White;
-            this.serverNameButton.Location = new System.Drawing.Point(10, 137);
+            this.serverNameButton.Location = new System.Drawing.Point(50, 110);
             this.serverNameButton.Name = "serverNameButton";
-            this.serverNameButton.Size = new System.Drawing.Size(110, 18);
+            this.serverNameButton.Size = new System.Drawing.Size(173, 18);
             this.serverNameButton.TabIndex = 3;
-            this.serverNameButton.Text = "Include Name";
+            this.serverNameButton.Text = "Server/Attendant Name";
             this.serverNameButton.UseVisualStyleBackColor = true;
             this.serverNameButton.CheckedChanged += new System.EventHandler(this.serverNameButton_CheckedChanged);
             this.serverNameButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.serverNameButton_KeyDown);
             // 
             // businessText
             // 
-            this.businessText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.businessText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.businessText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.businessText.Location = new System.Drawing.Point(126, 57);
+            this.businessText.Location = new System.Drawing.Point(232, 57);
             this.businessText.Name = "businessText";
-            this.businessText.Size = new System.Drawing.Size(273, 20);
+            this.businessText.Size = new System.Drawing.Size(292, 20);
             this.businessText.TabIndex = 0;
-            this.businessText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.businessText_KeyDown);
+            this.businessText.Leave += new System.EventHandler(this.businessText_Leave);
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePicker.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker.Location = new System.Drawing.Point(126, 96);
+            this.dateTimePicker.Location = new System.Drawing.Point(232, 160);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(273, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(292, 20);
             this.dateTimePicker.TabIndex = 2;
+            this.dateTimePicker.Leave += new System.EventHandler(this.dateTimePicker_Leave);
             // 
             // runButton
             // 
-            this.runButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.runButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.runButton.Location = new System.Drawing.Point(164, 211);
+            this.runButton.Location = new System.Drawing.Point(244, 550);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(90, 23);
             this.runButton.TabIndex = 10;
@@ -124,20 +141,16 @@
             // 
             // saveLocation
             // 
-            this.saveLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.saveLocation.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveLocation.Location = new System.Drawing.Point(126, 174);
+            this.saveLocation.Location = new System.Drawing.Point(232, 507);
             this.saveLocation.Name = "saveLocation";
-            this.saveLocation.Size = new System.Drawing.Size(243, 20);
+            this.saveLocation.Size = new System.Drawing.Size(261, 20);
             this.saveLocation.TabIndex = 6;
-            this.saveLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.saveLocation_KeyDown);
             // 
             // folderSelectButton
             // 
-            this.folderSelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.folderSelectButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.folderSelectButton.Location = new System.Drawing.Point(375, 173);
+            this.folderSelectButton.Location = new System.Drawing.Point(500, 506);
             this.folderSelectButton.Name = "folderSelectButton";
             this.folderSelectButton.Size = new System.Drawing.Size(24, 23);
             this.folderSelectButton.TabIndex = 8;
@@ -147,21 +160,25 @@
             // 
             // businessLabel
             // 
+            this.businessLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.businessLabel.AutoSize = true;
             this.businessLabel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.businessLabel.ForeColor = System.Drawing.Color.White;
-            this.businessLabel.Location = new System.Drawing.Point(57, 60);
+            this.businessLabel.Location = new System.Drawing.Point(62, 60);
             this.businessLabel.Name = "businessLabel";
-            this.businessLabel.Size = new System.Drawing.Size(63, 14);
+            this.businessLabel.Size = new System.Drawing.Size(98, 14);
             this.businessLabel.TabIndex = 8;
-            this.businessLabel.Text = "Business";
+            this.businessLabel.Text = "Business Name";
             // 
             // saveLabel
             // 
+            this.saveLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.saveLabel.AutoSize = true;
             this.saveLabel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveLabel.ForeColor = System.Drawing.Color.White;
-            this.saveLabel.Location = new System.Drawing.Point(22, 177);
+            this.saveLabel.Location = new System.Drawing.Point(62, 510);
             this.saveLabel.Name = "saveLabel";
             this.saveLabel.Size = new System.Drawing.Size(98, 14);
             this.saveLabel.TabIndex = 9;
@@ -169,47 +186,224 @@
             // 
             // serverNameText
             // 
-            this.serverNameText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.serverNameText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.serverNameText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serverNameText.Location = new System.Drawing.Point(126, 135);
+            this.serverNameText.Location = new System.Drawing.Point(232, 108);
             this.serverNameText.Name = "serverNameText";
-            this.serverNameText.Size = new System.Drawing.Size(273, 20);
+            this.serverNameText.Size = new System.Drawing.Size(292, 20);
             this.serverNameText.TabIndex = 4;
-            this.serverNameText.Visible = false;
-            this.serverNameText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.serverNameText_KeyDown);
+            this.serverNameText.Leave += new System.EventHandler(this.serverNameText_Leave);
             // 
             // dateButton
             // 
+            this.dateButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dateButton.AutoSize = true;
             this.dateButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateButton.ForeColor = System.Drawing.Color.White;
-            this.dateButton.Location = new System.Drawing.Point(10, 99);
+            this.dateButton.Location = new System.Drawing.Point(49, 164);
             this.dateButton.Name = "dateButton";
             this.dateButton.Size = new System.Drawing.Size(110, 18);
             this.dateButton.TabIndex = 1;
-            this.dateButton.Text = "Include Date";
+            this.dateButton.Text = "Date Visited";
             this.dateButton.UseVisualStyleBackColor = true;
             this.dateButton.CheckedChanged += new System.EventHandler(this.dateButton_CheckedChanged);
             this.dateButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateButton_KeyDown);
             // 
             // experienceLabel
             // 
+            this.experienceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.experienceLabel.AutoSize = true;
             this.experienceLabel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.experienceLabel.ForeColor = System.Drawing.Color.White;
-            this.experienceLabel.Location = new System.Drawing.Point(43, 21);
+            this.experienceLabel.Location = new System.Drawing.Point(62, 86);
             this.experienceLabel.Name = "experienceLabel";
-            this.experienceLabel.Size = new System.Drawing.Size(77, 14);
+            this.experienceLabel.Size = new System.Drawing.Size(147, 14);
             this.experienceLabel.TabIndex = 12;
-            this.experienceLabel.Text = "Experience";
+            this.experienceLabel.Text = "Resulting Experience";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(62, 483);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 14);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Signature";
+            // 
+            // signatureName
+            // 
+            this.signatureName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.signatureName.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signatureName.Location = new System.Drawing.Point(232, 480);
+            this.signatureName.Name = "signatureName";
+            this.signatureName.Size = new System.Drawing.Size(292, 20);
+            this.signatureName.TabIndex = 5;
+            this.signatureName.Leave += new System.EventHandler(this.signatureName_Leave);
+            // 
+            // directionText
+            // 
+            this.directionText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.directionText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directionText.Location = new System.Drawing.Point(232, 134);
+            this.directionText.Name = "directionText";
+            this.directionText.Size = new System.Drawing.Size(292, 20);
+            this.directionText.TabIndex = 19;
+            this.directionText.Leave += new System.EventHandler(this.directionText_Leave);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(49, 136);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(166, 18);
+            this.checkBox1.TabIndex = 18;
+            this.checkBox1.Text = "Location of Business";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.freehandText);
+            this.groupBox1.Controls.Add(this.freehand);
+            this.groupBox1.Controls.Add(this.dirty);
+            this.groupBox1.Controls.Add(this.wait);
+            this.groupBox1.Controls.Add(this.service);
+            this.groupBox1.Controls.Add(this.food);
+            this.groupBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(49, 188);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(475, 79);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Issue";
+            // 
+            // optionsLabel
+            // 
+            this.optionsLabel.AutoSize = true;
+            this.optionsLabel.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optionsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.optionsLabel.Location = new System.Drawing.Point(240, 20);
+            this.optionsLabel.Name = "optionsLabel";
+            this.optionsLabel.Size = new System.Drawing.Size(101, 23);
+            this.optionsLabel.TabIndex = 21;
+            this.optionsLabel.Text = "Options";
+            // 
+            // previewLabel
+            // 
+            this.previewLabel.AutoSize = true;
+            this.previewLabel.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previewLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.previewLabel.Location = new System.Drawing.Point(822, 20);
+            this.previewLabel.Name = "previewLabel";
+            this.previewLabel.Size = new System.Drawing.Size(101, 23);
+            this.previewLabel.TabIndex = 22;
+            this.previewLabel.Text = "Preview";
+            // 
+            // previewBox
+            // 
+            this.previewBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.previewBox.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previewBox.ForeColor = System.Drawing.Color.White;
+            this.previewBox.Location = new System.Drawing.Point(616, 57);
+            this.previewBox.Multiline = true;
+            this.previewBox.Name = "previewBox";
+            this.previewBox.Size = new System.Drawing.Size(500, 516);
+            this.previewBox.TabIndex = 23;
+            // 
+            // food
+            // 
+            this.food.AutoSize = true;
+            this.food.Location = new System.Drawing.Point(16, 19);
+            this.food.Name = "food";
+            this.food.Size = new System.Drawing.Size(54, 18);
+            this.food.TabIndex = 24;
+            this.food.Text = "Food";
+            this.food.UseVisualStyleBackColor = true;
+            this.food.CheckedChanged += new System.EventHandler(this.food_CheckedChanged);
+            // 
+            // service
+            // 
+            this.service.AutoSize = true;
+            this.service.Location = new System.Drawing.Point(99, 19);
+            this.service.Name = "service";
+            this.service.Size = new System.Drawing.Size(75, 18);
+            this.service.TabIndex = 25;
+            this.service.Text = "Service";
+            this.service.UseVisualStyleBackColor = true;
+            this.service.CheckedChanged += new System.EventHandler(this.service_CheckedChanged);
+            // 
+            // wait
+            // 
+            this.wait.AutoSize = true;
+            this.wait.Location = new System.Drawing.Point(203, 19);
+            this.wait.Name = "wait";
+            this.wait.Size = new System.Drawing.Size(89, 18);
+            this.wait.TabIndex = 26;
+            this.wait.Text = "Wait Time";
+            this.wait.UseVisualStyleBackColor = true;
+            this.wait.CheckedChanged += new System.EventHandler(this.wait_CheckedChanged);
+            // 
+            // dirty
+            // 
+            this.dirty.AutoSize = true;
+            this.dirty.Location = new System.Drawing.Point(320, 19);
+            this.dirty.Name = "dirty";
+            this.dirty.Size = new System.Drawing.Size(124, 18);
+            this.dirty.TabIndex = 27;
+            this.dirty.Text = "Dirty Location";
+            this.dirty.UseVisualStyleBackColor = true;
+            this.dirty.CheckedChanged += new System.EventHandler(this.dirty_CheckedChanged);
+            // 
+            // freehand
+            // 
+            this.freehand.AutoSize = true;
+            this.freehand.Location = new System.Drawing.Point(16, 43);
+            this.freehand.Name = "freehand";
+            this.freehand.Size = new System.Drawing.Size(82, 18);
+            this.freehand.TabIndex = 28;
+            this.freehand.Text = "Freehand";
+            this.freehand.UseVisualStyleBackColor = true;
+            this.freehand.CheckedChanged += new System.EventHandler(this.freehand_CheckedChanged);
+            // 
+            // freehandText
+            // 
+            this.freehandText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.freehandText.Enabled = false;
+            this.freehandText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.freehandText.Location = new System.Drawing.Point(106, 41);
+            this.freehandText.Name = "freehandText";
+            this.freehandText.Size = new System.Drawing.Size(350, 20);
+            this.freehandText.TabIndex = 24;
+            this.freehandText.Leave += new System.EventHandler(this.freehandText_Leave);
             // 
             // QuickBuildLetter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(413, 246);
+            this.ClientSize = new System.Drawing.Size(1128, 585);
+            this.Controls.Add(this.previewBox);
+            this.Controls.Add(this.previewLabel);
+            this.Controls.Add(this.optionsLabel);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.directionText);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.signatureName);
             this.Controls.Add(this.experienceLabel);
             this.Controls.Add(this.dateButton);
             this.Controls.Add(this.serverNameText);
@@ -223,9 +417,10 @@
             this.Controls.Add(this.serverNameButton);
             this.Controls.Add(this.negativeButton);
             this.Controls.Add(this.positiveButton);
-            this.MinimumSize = new System.Drawing.Size(429, 284);
             this.Name = "QuickBuildLetter";
             this.Text = "QuickBuildLetter";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,6 +442,20 @@
         private System.Windows.Forms.CheckBox dateButton;
         private System.Windows.Forms.Label experienceLabel;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox signatureName;
+        private System.Windows.Forms.TextBox directionText;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label optionsLabel;
+        private System.Windows.Forms.Label previewLabel;
+        private System.Windows.Forms.TextBox previewBox;
+        private System.Windows.Forms.CheckBox dirty;
+        private System.Windows.Forms.CheckBox wait;
+        private System.Windows.Forms.CheckBox service;
+        private System.Windows.Forms.CheckBox food;
+        private System.Windows.Forms.TextBox freehandText;
+        private System.Windows.Forms.CheckBox freehand;
     }
 }
 
