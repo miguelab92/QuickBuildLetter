@@ -220,10 +220,8 @@ namespace QuickBuildLetter
 
                     counter = 1;
                 }
-                else
-                {
-                    letter.Append('.');
-                }
+
+                letter.Append('.');
             }
 
             if (wait.Checked || cleaness.Checked)
@@ -233,6 +231,7 @@ namespace QuickBuildLetter
                 if (counter > 0)
                 {
                     letter.Append(" also");
+                    counter = 0;
                 }
 
                 if (wait.Checked)
@@ -352,6 +351,7 @@ namespace QuickBuildLetter
                 if (counter > 0)
                 {
                     letter.Append(" also");
+                    counter = 0;
                 }
 
                 if (wait.Checked)
@@ -375,9 +375,9 @@ namespace QuickBuildLetter
                 {
                     if (counter > 0)
                     {
-                        letter.Append("and ");
+                        letter.Append(" and");
                     }
-                    letter.Append("not happy with the dirtyness that I observed.");
+                    letter.Append(" not happy with the dirtyness that I observed.");
                 }
                 else
                 {
