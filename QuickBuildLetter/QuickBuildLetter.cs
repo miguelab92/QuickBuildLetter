@@ -4,6 +4,7 @@
 
 using System;
 using System.IO;
+using System.Net.Mail;
 using System.Text;
 using System.Windows.Forms;
 
@@ -173,52 +174,126 @@ namespace QuickBuildLetter
         }
 
         /// <summary>
-        /// Writes the letter if a positive review
-        /// </summary>
-        /// <returns>String</returns>
-        private string PositiveLetter()
-        {
-            StringBuilder tempString = new StringBuilder();
-
-            
-
-            return tempString.ToString();
-        }
-
-        /// <summary>
-        /// Writes the letter if a negative review
-        /// </summary>
-        /// <returns>String</returns>
-        private string NegativeLetter()
-        {
-            StringBuilder tempString = new StringBuilder();
-
-
-
-            return tempString.ToString();
-        }
-
-        /// <summary>
         /// Updates what is shown in the richTextBox view
         /// </summary>
         private void UpdateView()
         {
             StringBuilder letter = new StringBuilder();
+            int counter = 0;
 
             letter.Append(DateTime.Today.ToString("MM/dd/yyyy"));
             letter.Append("\r\n\r\nTo whomever this might concern at ");
             letter.Append(businessText.Text);
-            letter.Append(",\r\n");
+            letter.Append(",\r\nMy name is ");
+            letter.Append(signatureName.Text);
+            letter.Append(" and I am writting to you today due to ");
 
             if (positiveButton.Checked)
             {
-                letter.Append(PositiveLetter());
+                letter.Append("a great experience ");
             }
             else
             {
-                letter.Append(NegativeLetter());
+                letter.Append("a less than positive experience ");
             }
+
+            letter.Append("I recently had at ");
+
+            if (directionBox.Checked)
+            {
+                letter.Append(directionText.Text);
+            } else
+            {
+                letter.Append("one of your locations");
+            }
+
+            if (dateButton.Checked)
+            {
+                letter.Append(" on ");
+                letter.Append(dateTimePicker.Value.ToString("MM-dd-yyyy"));
+            }
+
+            letter.Append(". While ");
+
+            // Add code to check for dining, shopping, or visiting
+
+            letter.Append(" I ");
+
+            letter.Append("was ");
+            //Add code to check for dining, shopping, or visiting
+            letter.Append(" by ");
             
+            if (serverNameButton.Checked)
+            {
+                letter.Append(serverNameText.Text);
+                letter.Append('.');
+                letter.Append(serverNameText.Text.Split(' ')[0]);
+                letter.Append(" was ");
+
+            } else
+            {
+                letter.Append("the staff. They were ");
+            }
+
+            if (positiveButton.Checked)
+            {
+                letter.Append("tremendously ");
+                //Add code to check for dining, shopping, or visiting
+                letter.Append(" and elevated my experience beyond my expectations.");
+
+                if (food.Checked)
+                {
+                    letter.Append("The food I ate was fresh and excellent");
+                    ++counter;
+                }
+
+                if (service.Checked)
+                {
+                    if (counter > 0)
+                    {
+                        letter.Append(" and ");
+                    }
+
+                    letter.Append("I received amazingly friendly and helpful service");
+
+                    counter = 1;
+                }
+                letter.Append('.');
+
+                if (counter > 1)
+                {
+                    letter.Append("Also ");
+                }
+                if (wait.Checked)
+                {
+                    letter.Append("I was impressed by the short wait times and promptness of service");
+                    ++counter;
+                }
+
+                if (cleaness.Checked)
+                {
+                    letter.Append("I was ");
+                    if (counter > 0)
+                    {
+                        letter.Append("also ");
+                    }
+                    letter.Append("impressed by the cleanliness of the location.");
+                }
+
+                letter.Append(" After such a positive experience, I will be sure to recommend your business to friends and family.");
+                letter.Append(" Thanks again to ");
+                letter.Append(serverNameText.Text);
+                letter.Append(" for their amazing ");
+
+                //code for food/business/etc.
+
+                letter.Append(" and I hope to see them again next time I come in!");
+            }
+            else
+            {
+                letter.Append("a less than positive experience ");
+            }
+
             letter.Append("\r\n\r\nThank you for your time,\r\n");
             letter.Append(signatureName.Text);
 
@@ -287,6 +362,90 @@ namespace QuickBuildLetter
 
         private void freehandText_Leave(object sender, EventArgs e)
         {
+            UpdateView();
+        }
+
+        private void emailButton_Click(object sender, EventArgs e)
+        {
+            if (companyEmail.Text == "")
+            {
+                if (FindCompanyAddress())
+                {
+                    SendEmail();
+                } else
+                {
+                    MessageBox.Show("Please fill in Company Email Address");
+                }
+            }
+            else if (ValidateEmail(companyEmail.Text))
+            {
+                SendEmail();
+            }
+            else
+            {
+                MessageBox.Show("Company Email is not valid");
+            }
+        }
+
+        private bool FindCompanyAddress()
+        {
+            bool emailFound = false;
+            string foundEmail = "";
+
+            ///**** add search for the email through google ****///
+
+            if (ValidateEmail(foundEmail))
+            {
+                emailFound = true;
+                companyEmail.Text = foundEmail;
+            }
+
+            return emailFound;
+        }
+
+        private bool ValidateEmail( string email )
+        {
+            bool validEmail = true;
+
+            try
+            {
+                MailAddress mail = new MailAddress(email);
+            } catch
+            {
+                validEmail = false;
+            }
+
+            return validEmail;
+        }
+
+        private void SendEmail()
+        {
+            StringBuilder link = new StringBuilder();
+            link.Append("mailto:");
+            link.Append(companyEmail.Text);
+            link.Append("?Subject=Feedback%20on%20recent%20visit&body=");
+            link.Append(previewBox.Text.Replace(" ", 
+                "%20").Replace("\r\n", "%0D%0A"));
+
+            System.Diagnostics.Process.Start(link.ToString()); 
+        }
+
+        private void userName_Leave(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void directionBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (directionBox.Checked)
+            {
+                directionText.Enabled = true;
+            }
+            else
+            {
+                directionText.Enabled = false;
+            }
+
             UpdateView();
         }
     }

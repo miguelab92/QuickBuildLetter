@@ -5,5 +5,8 @@
     <Setting Name="saveLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\QuickBuildLetter\</Value>
     </Setting>
+    <Setting Name="usersName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Miguel Bermudez</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -34,5 +34,17 @@ namespace QuickBuildLetter.Properties {
                 this["saveLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Miguel Bermudez")]
+        public string usersName {
+            get {
+                return ((string)(this["usersName"]));
+            }
+            set {
+                this["usersName"] = value;
+            }
+        }
     }
 }
