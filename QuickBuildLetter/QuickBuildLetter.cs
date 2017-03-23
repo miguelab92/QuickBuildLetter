@@ -179,7 +179,28 @@ namespace QuickBuildLetter
         private void UpdateView()
         {
             StringBuilder letter = new StringBuilder();
-            int counter = 0;
+
+            letter.Append(IntroExp());
+
+            if (positiveButton.Checked)
+            {
+                letter.Append(PositiveExp());
+            }
+            else
+            {
+                letter.Append(NegativeExp());
+            }
+
+            letter.Append("\r\n\r\nThank you for your time,\r\n");
+            letter.Append(signatureName.Text);
+
+            previewBox.Text = letter.ToString();
+            Application.DoEvents();
+        }
+
+        private string IntroExp()
+        {
+            StringBuilder letter = new StringBuilder();
 
             letter.Append(DateTime.Today.ToString("MM/dd/yyyy"));
             letter.Append("\r\n\r\nTo whomever this might concern at ");
@@ -202,7 +223,8 @@ namespace QuickBuildLetter
             if (directionBox.Checked)
             {
                 letter.Append(directionText.Text);
-            } else
+            }
+            else
             {
                 letter.Append("one of your locations");
             }
@@ -217,88 +239,181 @@ namespace QuickBuildLetter
 
             // Add code to check for dining, shopping, or visiting
 
-            letter.Append(" I ");
-
-            letter.Append("was ");
+            letter.Append(" I was ");
             //Add code to check for dining, shopping, or visiting
             letter.Append(" by ");
-            
+
             if (serverNameButton.Checked)
             {
                 letter.Append(serverNameText.Text);
-                letter.Append('.');
+                letter.Append(". ");
                 letter.Append(serverNameText.Text.Split(' ')[0]);
                 letter.Append(" was ");
 
-            } else
+            }
+            else
             {
                 letter.Append("the staff. They were ");
             }
 
-            if (positiveButton.Checked)
+            return letter.ToString();
+        }
+
+        private string PositiveExp()
+        {
+            StringBuilder letter = new StringBuilder();
+            int counter = 0;
+
+            letter.Append("tremendously ");
+            //Add code to check for dining, shopping, or visiting
+            letter.Append(" and elevated my experience beyond my expectations.");
+
+            if (food.Checked)
             {
-                letter.Append("tremendously ");
-                //Add code to check for dining, shopping, or visiting
-                letter.Append(" and elevated my experience beyond my expectations.");
+                letter.Append(" The food I ate was fresh and excellent");
+                ++counter;
+            }
 
-                if (food.Checked)
+            if (service.Checked)
+            {
+                if (counter > 0)
                 {
-                    letter.Append("The food I ate was fresh and excellent");
-                    ++counter;
+                    letter.Append(" and");
                 }
 
-                if (service.Checked)
-                {
-                    if (counter > 0)
-                    {
-                        letter.Append(" and ");
-                    }
+                letter.Append(" I received amazingly friendly and helpful service");
 
-                    letter.Append("I received amazingly friendly and helpful service");
+                counter = 1;
+            }
+            letter.Append(". I was ");
 
-                    counter = 1;
-                }
-                letter.Append('.');
+            if (counter > 0)
+            {
+                letter.Append("also ");
+            }
 
-                if (counter > 1)
-                {
-                    letter.Append("Also ");
-                }
-                if (wait.Checked)
-                {
-                    letter.Append("I was impressed by the short wait times and promptness of service");
-                    ++counter;
-                }
+            if (wait.Checked)
+            {
+                letter.Append("impressed by the short wait times");
 
                 if (cleaness.Checked)
                 {
-                    letter.Append("I was ");
-                    if (counter > 0)
-                    {
-                        letter.Append("also ");
-                    }
-                    letter.Append("impressed by the cleanliness of the location.");
+                    letter.Append(", ");
+                }
+                else
+                {
+                    letter.Append(" and ");
                 }
 
-                letter.Append(" After such a positive experience, I will be sure to recommend your business to friends and family.");
-                letter.Append(" Thanks again to ");
-                letter.Append(serverNameText.Text);
-                letter.Append(" for their amazing ");
+                letter.Append("promptness of service");
+                ++counter;
+            }
 
-                //code for food/business/etc.
-
-                letter.Append(" and I hope to see them again next time I come in!");
+            if (cleaness.Checked)
+            {
+                if (counter > 0)
+                {
+                    letter.Append("and ");
+                }
+                letter.Append("impressed by the cleanliness of the location.");
             }
             else
             {
-                letter.Append("a less than positive experience ");
+                letter.Append('.');
             }
 
-            letter.Append("\r\n\r\nThank you for your time,\r\n");
-            letter.Append(signatureName.Text);
+            if (freehand.Checked)
+            {
+                letter.Append(' ');
+                letter.Append(freehandText.Text);
+            }
 
-            previewBox.Text = letter.ToString();
-            Application.DoEvents();
+            letter.Append(" After such a positive experience, I will be sure to recommend your business to friends and family. Thanks again to ");
+            letter.Append(serverNameText.Text);
+            letter.Append(" for their amazing ");
+
+            //code for food/business/etc.
+
+            letter.Append(" and I hope to see them again next time I come in!");
+
+            return letter.ToString();
+        }
+
+        private string NegativeExp()
+        {
+            StringBuilder letter = new StringBuilder();
+            int counter = 0;
+            
+            letter.Append("not very ");
+            //Add code to check for dining, shopping, or visiting
+            letter.Append(" and it left me with a negative experience.");
+
+            if (food.Checked)
+            {
+                letter.Append(" The food I ate was unfortuently not very good");
+                ++counter;
+            }
+
+            if (service.Checked)
+            {
+                if (counter > 0)
+                {
+                    letter.Append(" and");
+                }
+
+                letter.Append(" the service I received was rushed and unfriendly");
+
+                counter = 1;
+            }
+
+            letter.Append(". I was ");
+
+            if (counter > 0)
+            {
+                letter.Append("also ");
+            }
+
+            if (wait.Checked)
+            {
+                letter.Append("not impressed by the long wait times");
+
+                if (cleaness.Checked)
+                {
+                    letter.Append(", ");
+                }
+                else
+                {
+                    letter.Append(" and ");
+                }
+
+                letter.Append("slow service");
+                ++counter;
+            }
+
+            if (cleaness.Checked)
+            {
+                if (counter > 0)
+                {
+                    letter.Append("and ");
+                }
+                letter.Append("not happy with the dirtyness that I observed.");
+            }
+            else
+            {
+                letter.Append('.');
+            }
+
+            if (freehand.Checked)
+            {
+                letter.Append(' ');
+                letter.Append(freehandText.Text);
+            }
+
+            letter.Append(" I feel like this is not up to the standards that I have come to expect from ");
+            letter.Append(businessText.Text);
+            letter.Append(" and I hope that it is not indicative of future experiences.");
+
+            return letter.ToString();
         }
 
         private void businessText_Leave(object sender, EventArgs e)
