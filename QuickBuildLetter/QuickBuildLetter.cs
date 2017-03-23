@@ -47,98 +47,319 @@ namespace QuickBuildLetter
             {
                 saveLocation.Text = "";
             }
+            
+            //Try to set the default user name from config
+            try
+            {
+                signatureName.Text = Properties.Settings.Default.usersName;
+            } catch
+            {
+                signatureName.Text = "";
+            }
         }
 
         /// <summary>
-        /// Preform a click when enter or return is pressed
+        /// Updates what is shown in the richTextBox view
         /// </summary>
-        /// <param name="sender">Not Used</param>
-        /// <param name="e">Key pressed</param>
-        private void dateButton_CheckedChanged(object sender, EventArgs e)
+        private void UpdateView()
         {
-            if (dateButton.Checked)
+            StringBuilder letter = new StringBuilder();
+
+            letter.Append(IntroExp());
+
+            if (positiveButton.Checked)
             {
-                dateTimePicker.Enabled = true;
+                letter.Append(PositiveExp());
             }
             else
             {
-                dateTimePicker.Enabled = false;
+                letter.Append(NegativeExp());
             }
 
+            letter.Append("\r\n\r\nThank you for your time,\r\n");
+            letter.Append(signatureName.Text);
+
+            previewBox.Text = letter.ToString();
+            Application.DoEvents();
+        }
+
+        private void userName_Leave(object sender, EventArgs e)
+        {
             UpdateView();
         }
 
-        /// <summary>
-        /// Preform a click when enter or return is pressed
-        /// </summary>
-        /// <param name="sender">Not Used</param>
-        /// <param name="e">Key pressed</param>
-        private void dateButton_KeyDown(object sender, KeyEventArgs e)
+        private void businessText_Leave(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
-            {
-                if (dateButton.Checked)
-                {
-                    dateButton.Checked = true;
-                }
-                else
-                {
-                    dateButton.Checked = false;
-                }
-            }
+            UpdateView();
         }
 
-        /// <summary>
-        /// Preform a click when enter or return is pressed
-        /// </summary>
-        /// <param name="sender">Not Used</param>
-        /// <param name="e">Key pressed</param>
+        private void negativeButton_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void positiveButton_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
         private void serverNameButton_CheckedChanged(object sender, EventArgs e)
         {
             if (serverNameButton.Checked)
             {
                 serverNameText.Enabled = true;
+                serverNameText.Focus();
             }
             else
             {
                 serverNameText.Enabled = false;
+                UpdateView();
             }
-
-            UpdateView();
         }
 
-        /// <summary>
-        /// Preform a click when enter or return is pressed
-        /// </summary>
-        /// <param name="sender">Not Used</param>
-        /// <param name="e">Key pressed</param>
         private void serverNameButton_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 if (serverNameButton.Checked)
                 {
-                    serverNameButton.Checked = true;
-                } else
-                {
                     serverNameButton.Checked = false;
+                }
+                else
+                {
+                    serverNameButton.Checked = true;
                 }
             }
         }
 
-        /// <summary>
-        /// Preform a click when enter or return is pressed
-        /// </summary>
-        /// <param name="sender">Not Used</param>
-        /// <param name="e">Key pressed</param>
+        private void serverNameText_Leave(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void directionBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (directionBox.Checked)
+            {
+                directionText.Enabled = true;
+                directionBox.Focus();
+            }
+            else
+            {
+                directionText.Enabled = false;
+                UpdateView();
+            }
+        }
+
+        private void directionBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if (directionBox.Checked)
+                {
+                    directionBox.Checked = false;
+                }
+                else
+                {
+                    directionBox.Checked = true;
+                }
+            }
+        }
+
+        private void directionText_Leave(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void dateButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dateButton.Checked)
+            {
+                dateTimePicker.Enabled = true;
+                dateTimePicker.Focus();
+            }
+            else
+            {
+                dateTimePicker.Enabled = false;
+                UpdateView();
+            }
+        }
+        
+        private void dateButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if (dateButton.Checked)
+                {
+                    dateButton.Checked = false;
+                }
+                else
+                {
+                    dateButton.Checked = true;
+                }
+            }
+        }
+
+        private void dateTimePicker_Leave(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void restaurant_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void retail_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void Visit_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void otherRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (otherRadioButton.Checked)
+            {
+                otherTextBox.Enabled = true;
+                otherTextBox.Focus();
+            }
+            else
+            {
+                otherTextBox.Enabled = false;
+                //No view update as in this case another button MUST have been 
+                //clicked to get here which means UpdateView() was called
+            }
+        }
+
+        private void otherTextBox_Leave(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void food_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void food_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if (food.Checked)
+                {
+                    food.Checked = false;
+                }
+                else
+                {
+                    food.Checked = true;
+                }
+            }
+        }
+
+        private void service_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void service_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if (service.Checked)
+                {
+                    service.Checked = false;
+                }
+                else
+                {
+                    service.Checked = true;
+                }
+            }
+        }
+
+        private void wait_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void wait_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if (wait.Checked)
+                {
+                    wait.Checked = false;
+                }
+                else
+                {
+                    wait.Checked = true;
+                }
+            }
+        }
+
+        private void dirty_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void cleaness_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if (cleaness.Checked)
+                {
+                    cleaness.Checked = false;
+                }
+                else
+                {
+                    cleaness.Checked = true;
+                }
+            }
+        }
+
+        private void freehand_CheckedChanged(object sender, EventArgs e)
+        {
+            if (freehand.Checked)
+            {
+                freehandText.Enabled = true;
+                freehandText.Focus();
+            }
+            else
+            {
+                freehandText.Enabled = false;
+                UpdateView();
+            }
+        }
+
+        private void freehand_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if (freehand.Checked)
+                {
+                    freehand.Checked = false;
+                }
+                else
+                {
+                    freehand.Checked = true;
+                }
+            }
+        }
+
+        private void freehandText_Leave(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
         private void folderSelectButton_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 saveLocation.Text = folderBrowserDialog.SelectedPath;
             }
-
-            UpdateView();
         }
 
         /// <summary>
@@ -173,31 +394,6 @@ namespace QuickBuildLetter
             }
         }
 
-        /// <summary>
-        /// Updates what is shown in the richTextBox view
-        /// </summary>
-        private void UpdateView()
-        {
-            StringBuilder letter = new StringBuilder();
-
-            letter.Append(IntroExp());
-
-            if (positiveButton.Checked)
-            {
-                letter.Append(PositiveExp());
-            }
-            else
-            {
-                letter.Append(NegativeExp());
-            }
-
-            letter.Append("\r\n\r\nThank you for your time,\r\n");
-            letter.Append(signatureName.Text);
-
-            previewBox.Text = letter.ToString();
-            Application.DoEvents();
-        }
-
         private string IntroExp()
         {
             StringBuilder letter = new StringBuilder();
@@ -205,7 +401,7 @@ namespace QuickBuildLetter
             letter.Append(DateTime.Today.ToString("MM/dd/yyyy"));
             letter.Append("\r\n\r\nTo whomever this might concern at ");
             letter.Append(businessText.Text);
-            letter.Append(",\r\nMy name is ");
+            letter.Append(",\r\n\r\nMy name is ");
             letter.Append(signatureName.Text);
             letter.Append(" and I am writting to you today due to ");
 
@@ -222,6 +418,7 @@ namespace QuickBuildLetter
 
             if (directionBox.Checked)
             {
+                letter.Append("your location on ");
                 letter.Append(directionText.Text);
             }
             else
@@ -236,11 +433,42 @@ namespace QuickBuildLetter
             }
 
             letter.Append(". While ");
-
-            // Add code to check for dining, shopping, or visiting
+            
+            if (restaurant.Checked)
+            {
+                letter.Append("eating at your restaurant");
+            } else if (retail.Checked)
+            {
+                letter.Append("shopping in your business");
+            } else if (visit.Checked)
+            {
+                letter.Append("visiting your business");
+            } else if (otherRadioButton.Checked)
+            {
+                letter.Append(otherTextBox.Text);
+                letter.Append(" your business");
+            } else
+            {
+                letter.Append("at your business");
+            }
 
             letter.Append(" I was ");
-            //Add code to check for dining, shopping, or visiting
+
+            if (restaurant.Checked)
+            {
+                if (serverNameButton.Checked)
+                {
+                    letter.Append("served");
+                } else
+                {
+                    letter.Append("attended");
+                }
+            }
+            else
+            {
+                letter.Append("assisted");
+            }
+
             letter.Append(" by ");
 
             if (serverNameButton.Checked)
@@ -264,62 +492,71 @@ namespace QuickBuildLetter
             StringBuilder letter = new StringBuilder();
             int counter = 0;
 
-            letter.Append("tremendously ");
-            //Add code to check for dining, shopping, or visiting
-            letter.Append(" and elevated my experience beyond my expectations.");
+            letter.Append("tremendously helpful, quick, and friendly which elevated my experience beyond my expectations.");
 
-            if (food.Checked)
+            if (food.Checked || service.Checked)
             {
-                letter.Append(" The food I ate was fresh and excellent");
-                ++counter;
-            }
-
-            if (service.Checked)
-            {
-                if (counter > 0)
+                if (food.Checked)
                 {
-                    letter.Append(" and");
+                    letter.Append(" The food I ate was fresh and excellent");
+                    ++counter;
                 }
 
-                letter.Append(" I received amazingly friendly and helpful service");
-
-                counter = 1;
-            }
-            letter.Append(". I was ");
-
-            if (counter > 0)
-            {
-                letter.Append("also ");
-            }
-
-            if (wait.Checked)
-            {
-                letter.Append("impressed by the short wait times");
-
-                if (cleaness.Checked)
+                if (service.Checked)
                 {
-                    letter.Append(", ");
+                    if (counter > 0)
+                    {
+                        letter.Append(" and");
+                    }
+
+                    letter.Append(" I received amazingly friendly and helpful service");
+
+                    counter = 1;
                 }
                 else
                 {
-                    letter.Append(" and ");
+                    letter.Append('.');
                 }
-
-                letter.Append("promptness of service");
-                ++counter;
             }
 
-            if (cleaness.Checked)
+            if (wait.Checked || cleaness.Checked)
             {
+                letter.Append(" I was");
+
                 if (counter > 0)
                 {
-                    letter.Append("and ");
+                    letter.Append(" also");
                 }
-                letter.Append("impressed by the cleanliness of the location.");
-            }
-            else
-            {
-                letter.Append('.');
+
+                if (wait.Checked)
+                {
+                    letter.Append(" impressed by the short wait times");
+
+                    if (cleaness.Checked)
+                    {
+                        letter.Append(", ");
+                    }
+                    else
+                    {
+                        letter.Append(" and");
+                    }
+
+                    letter.Append(" promptness of service");
+                    ++counter;
+                }
+
+                if (cleaness.Checked)
+                {
+                    if (counter > 0)
+                    {
+                        letter.Append(" and");
+                    }
+                    letter.Append(" impressed by the cleanliness of the location.");
+                }
+                else
+                {
+                    letter.Append('.');
+                }
             }
 
             if (freehand.Checked)
@@ -332,7 +569,18 @@ namespace QuickBuildLetter
             letter.Append(serverNameText.Text);
             letter.Append(" for their amazing ");
 
-            //code for food/business/etc.
+            if (restaurant.Checked)
+            {
+                letter.Append("service");
+            }
+            else if (retail.Checked)
+            {
+                letter.Append("help");
+            }
+            else
+            {
+                letter.Append("friendliness");
+            }
 
             letter.Append(" and I hope to see them again next time I come in!");
 
@@ -345,68 +593,89 @@ namespace QuickBuildLetter
             int counter = 0;
             
             letter.Append("not very ");
-            //Add code to check for dining, shopping, or visiting
-            letter.Append(" and it left me with a negative experience.");
 
-            if (food.Checked)
+            if (restaurant.Checked)
             {
-                letter.Append(" The food I ate was unfortuently not very good");
-                ++counter;
+                letter.Append("friendly nor attentive");
             }
-
-            if (service.Checked)
+            else if (retail.Checked)
             {
-                if (counter > 0)
-                {
-                    letter.Append(" and");
-                }
-
-                letter.Append(" the service I received was rushed and unfriendly");
-
-                counter = 1;
-            }
-
-            letter.Append(". I was ");
-
-            if (counter > 0)
-            {
-                letter.Append("also ");
-            }
-
-            if (wait.Checked)
-            {
-                letter.Append("not impressed by the long wait times");
-
-                if (cleaness.Checked)
-                {
-                    letter.Append(", ");
-                }
-                else
-                {
-                    letter.Append(" and ");
-                }
-
-                letter.Append("slow service");
-                ++counter;
-            }
-
-            if (cleaness.Checked)
-            {
-                if (counter > 0)
-                {
-                    letter.Append("and ");
-                }
-                letter.Append("not happy with the dirtyness that I observed.");
+                letter.Append("helpful nor caring");
             }
             else
             {
+                letter.Append("friendly nor helpful");
+            }
+            letter.Append(" and it left me with a negative experience.");
+
+            if (food.Checked || service.Checked)
+            {
+                if (food.Checked)
+                {
+                    letter.Append(" The food I ate was unfortuently not very good");
+                    ++counter;
+                }
+
+                if (service.Checked)
+                {
+                    if (counter > 0)
+                    {
+                        letter.Append(" and");
+                    }
+
+                    letter.Append(" I received service that I felt was rushed, unfriendly, and unprofessional");
+
+                    counter = 1;
+                }
+
                 letter.Append('.');
+            }
+
+            if (cleaness.Checked || wait.Checked)
+            {
+                letter.Append(" I was");
+
+                if (counter > 0)
+                {
+                    letter.Append(" also");
+                }
+
+                if (wait.Checked)
+                {
+                    letter.Append(" not impressed by the long wait times");
+
+                    if (cleaness.Checked)
+                    {
+                        letter.Append(", ");
+                    }
+                    else
+                    {
+                        letter.Append(" and ");
+                    }
+
+                    letter.Append("slow service");
+                    ++counter;
+                }
+
+                if (cleaness.Checked)
+                {
+                    if (counter > 0)
+                    {
+                        letter.Append("and ");
+                    }
+                    letter.Append("not happy with the dirtyness that I observed.");
+                }
+                else
+                {
+                    letter.Append('.');
+                }
             }
 
             if (freehand.Checked)
             {
                 letter.Append(' ');
                 letter.Append(freehandText.Text);
+                letter.Append('.');
             }
 
             letter.Append(" I feel like this is not up to the standards that I have come to expect from ");
@@ -414,70 +683,6 @@ namespace QuickBuildLetter
             letter.Append(" and I hope that it is not indicative of future experiences.");
 
             return letter.ToString();
-        }
-
-        private void businessText_Leave(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void serverNameText_Leave(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void directionText_Leave(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void dateTimePicker_Leave(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void signatureName_Leave(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void freehand_CheckedChanged(object sender, EventArgs e)
-        {
-            if (freehand.Checked)
-            {
-                freehandText.Enabled = true;
-            }
-            else
-            {
-                freehandText.Enabled = false;
-            }
-
-            UpdateView();
-        }
-
-        private void food_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void service_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void wait_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void dirty_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void freehandText_Leave(object sender, EventArgs e)
-        {
-            UpdateView();
         }
 
         private void emailButton_Click(object sender, EventArgs e)
@@ -536,32 +741,16 @@ namespace QuickBuildLetter
         private void SendEmail()
         {
             StringBuilder link = new StringBuilder();
+
+            //Create a mailto url for browser
             link.Append("mailto:");
             link.Append(companyEmail.Text);
             link.Append("?Subject=Feedback%20on%20recent%20visit&body=");
+            //Replace all new lines with %0D%0A for new lines in mailto link
             link.Append(previewBox.Text.Replace(" ", 
                 "%20").Replace("\r\n", "%0D%0A"));
 
-            System.Diagnostics.Process.Start(link.ToString()); 
-        }
-
-        private void userName_Leave(object sender, EventArgs e)
-        {
-            UpdateView();
-        }
-
-        private void directionBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (directionBox.Checked)
-            {
-                directionText.Enabled = true;
-            }
-            else
-            {
-                directionText.Enabled = false;
-            }
-
-            UpdateView();
+            System.Diagnostics.Process.Start(link.ToString());
         }
     }
 }

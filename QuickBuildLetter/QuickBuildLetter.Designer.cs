@@ -46,7 +46,7 @@
             this.signatureName = new System.Windows.Forms.TextBox();
             this.directionText = new System.Windows.Forms.TextBox();
             this.directionBox = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxReason = new System.Windows.Forms.GroupBox();
             this.freehandText = new System.Windows.Forms.TextBox();
             this.freehand = new System.Windows.Forms.CheckBox();
             this.cleaness = new System.Windows.Forms.CheckBox();
@@ -59,7 +59,14 @@
             this.emailButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.companyEmail = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxActivity = new System.Windows.Forms.GroupBox();
+            this.otherTextBox = new System.Windows.Forms.TextBox();
+            this.restaurant = new System.Windows.Forms.RadioButton();
+            this.retail = new System.Windows.Forms.RadioButton();
+            this.otherRadioButton = new System.Windows.Forms.RadioButton();
+            this.visit = new System.Windows.Forms.RadioButton();
+            this.groupBoxReason.SuspendLayout();
+            this.groupBoxActivity.SuspendLayout();
             this.SuspendLayout();
             // 
             // positiveButton
@@ -70,13 +77,14 @@
             this.positiveButton.Checked = true;
             this.positiveButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.positiveButton.ForeColor = System.Drawing.Color.White;
-            this.positiveButton.Location = new System.Drawing.Point(288, 166);
+            this.positiveButton.Location = new System.Drawing.Point(287, 112);
             this.positiveButton.Name = "positiveButton";
             this.positiveButton.Size = new System.Drawing.Size(81, 18);
-            this.positiveButton.TabIndex = 12;
+            this.positiveButton.TabIndex = 8;
             this.positiveButton.TabStop = true;
             this.positiveButton.Text = "Positive";
             this.positiveButton.UseVisualStyleBackColor = true;
+            this.positiveButton.CheckedChanged += new System.EventHandler(this.positiveButton_CheckedChanged);
             // 
             // negativeButton
             // 
@@ -85,13 +93,14 @@
             this.negativeButton.AutoSize = true;
             this.negativeButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.negativeButton.ForeColor = System.Drawing.Color.White;
-            this.negativeButton.Location = new System.Drawing.Point(412, 166);
+            this.negativeButton.Location = new System.Drawing.Point(411, 112);
             this.negativeButton.Name = "negativeButton";
             this.negativeButton.Size = new System.Drawing.Size(81, 18);
-            this.negativeButton.TabIndex = 14;
+            this.negativeButton.TabIndex = 12;
             this.negativeButton.TabStop = true;
             this.negativeButton.Text = "Negative";
             this.negativeButton.UseVisualStyleBackColor = true;
+            this.negativeButton.CheckedChanged += new System.EventHandler(this.negativeButton_CheckedChanged);
             // 
             // serverNameButton
             // 
@@ -100,10 +109,10 @@
             this.serverNameButton.AutoSize = true;
             this.serverNameButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serverNameButton.ForeColor = System.Drawing.Color.White;
-            this.serverNameButton.Location = new System.Drawing.Point(50, 192);
+            this.serverNameButton.Location = new System.Drawing.Point(49, 138);
             this.serverNameButton.Name = "serverNameButton";
             this.serverNameButton.Size = new System.Drawing.Size(173, 18);
-            this.serverNameButton.TabIndex = 3;
+            this.serverNameButton.TabIndex = 16;
             this.serverNameButton.Text = "Server/Attendant Name";
             this.serverNameButton.UseVisualStyleBackColor = true;
             this.serverNameButton.CheckedChanged += new System.EventHandler(this.serverNameButton_CheckedChanged);
@@ -114,10 +123,10 @@
             this.businessText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.businessText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.businessText.Location = new System.Drawing.Point(232, 139);
+            this.businessText.Location = new System.Drawing.Point(231, 85);
             this.businessText.Name = "businessText";
             this.businessText.Size = new System.Drawing.Size(292, 20);
-            this.businessText.TabIndex = 0;
+            this.businessText.TabIndex = 4;
             this.businessText.Leave += new System.EventHandler(this.businessText_Leave);
             // 
             // dateTimePicker
@@ -125,19 +134,20 @@
             this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePicker.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker.Location = new System.Drawing.Point(232, 242);
+            this.dateTimePicker.Location = new System.Drawing.Point(231, 188);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(292, 20);
-            this.dateTimePicker.TabIndex = 2;
+            this.dateTimePicker.TabIndex = 34;
+            this.dateTimePicker.TabStop = false;
             this.dateTimePicker.Leave += new System.EventHandler(this.dateTimePicker_Leave);
             // 
             // runButton
             // 
             this.runButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.runButton.Location = new System.Drawing.Point(169, 550);
+            this.runButton.Location = new System.Drawing.Point(161, 438);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(90, 23);
-            this.runButton.TabIndex = 10;
+            this.runButton.TabIndex = 84;
             this.runButton.Text = "Generate";
             this.runButton.UseVisualStyleBackColor = true;
             this.runButton.Click += new System.EventHandler(this.runButton_Click);
@@ -145,18 +155,18 @@
             // saveLocation
             // 
             this.saveLocation.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveLocation.Location = new System.Drawing.Point(232, 489);
+            this.saveLocation.Location = new System.Drawing.Point(231, 386);
             this.saveLocation.Name = "saveLocation";
             this.saveLocation.Size = new System.Drawing.Size(261, 20);
-            this.saveLocation.TabIndex = 6;
+            this.saveLocation.TabIndex = 76;
             // 
             // folderSelectButton
             // 
             this.folderSelectButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.folderSelectButton.Location = new System.Drawing.Point(500, 488);
+            this.folderSelectButton.Location = new System.Drawing.Point(499, 385);
             this.folderSelectButton.Name = "folderSelectButton";
             this.folderSelectButton.Size = new System.Drawing.Size(24, 23);
-            this.folderSelectButton.TabIndex = 8;
+            this.folderSelectButton.TabIndex = 78;
             this.folderSelectButton.Text = "...";
             this.folderSelectButton.UseVisualStyleBackColor = true;
             this.folderSelectButton.Click += new System.EventHandler(this.folderSelectButton_Click);
@@ -168,7 +178,7 @@
             this.businessLabel.AutoSize = true;
             this.businessLabel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.businessLabel.ForeColor = System.Drawing.Color.White;
-            this.businessLabel.Location = new System.Drawing.Point(62, 142);
+            this.businessLabel.Location = new System.Drawing.Point(61, 88);
             this.businessLabel.Name = "businessLabel";
             this.businessLabel.Size = new System.Drawing.Size(98, 14);
             this.businessLabel.TabIndex = 8;
@@ -181,7 +191,7 @@
             this.saveLabel.AutoSize = true;
             this.saveLabel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveLabel.ForeColor = System.Drawing.Color.White;
-            this.saveLabel.Location = new System.Drawing.Point(62, 492);
+            this.saveLabel.Location = new System.Drawing.Point(61, 389);
             this.saveLabel.Name = "saveLabel";
             this.saveLabel.Size = new System.Drawing.Size(98, 14);
             this.saveLabel.TabIndex = 9;
@@ -193,10 +203,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.serverNameText.Enabled = false;
             this.serverNameText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serverNameText.Location = new System.Drawing.Point(232, 190);
+            this.serverNameText.Location = new System.Drawing.Point(231, 136);
             this.serverNameText.Name = "serverNameText";
             this.serverNameText.Size = new System.Drawing.Size(292, 20);
-            this.serverNameText.TabIndex = 4;
+            this.serverNameText.TabIndex = 20;
             this.serverNameText.Leave += new System.EventHandler(this.serverNameText_Leave);
             // 
             // dateButton
@@ -206,10 +216,10 @@
             this.dateButton.AutoSize = true;
             this.dateButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateButton.ForeColor = System.Drawing.Color.White;
-            this.dateButton.Location = new System.Drawing.Point(49, 246);
+            this.dateButton.Location = new System.Drawing.Point(48, 192);
             this.dateButton.Name = "dateButton";
             this.dateButton.Size = new System.Drawing.Size(110, 18);
-            this.dateButton.TabIndex = 1;
+            this.dateButton.TabIndex = 32;
             this.dateButton.Text = "Date Visited";
             this.dateButton.UseVisualStyleBackColor = true;
             this.dateButton.CheckedChanged += new System.EventHandler(this.dateButton_CheckedChanged);
@@ -222,7 +232,7 @@
             this.experienceLabel.AutoSize = true;
             this.experienceLabel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.experienceLabel.ForeColor = System.Drawing.Color.White;
-            this.experienceLabel.Location = new System.Drawing.Point(62, 168);
+            this.experienceLabel.Location = new System.Drawing.Point(61, 114);
             this.experienceLabel.Name = "experienceLabel";
             this.experienceLabel.Size = new System.Drawing.Size(147, 14);
             this.experienceLabel.TabIndex = 12;
@@ -235,7 +245,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(62, 116);
+            this.label1.Location = new System.Drawing.Point(61, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 14);
             this.label1.TabIndex = 16;
@@ -246,10 +256,10 @@
             this.signatureName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.signatureName.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signatureName.Location = new System.Drawing.Point(232, 113);
+            this.signatureName.Location = new System.Drawing.Point(231, 59);
             this.signatureName.Name = "signatureName";
             this.signatureName.Size = new System.Drawing.Size(292, 20);
-            this.signatureName.TabIndex = 5;
+            this.signatureName.TabIndex = 0;
             this.signatureName.Leave += new System.EventHandler(this.userName_Leave);
             // 
             // directionText
@@ -258,10 +268,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.directionText.Enabled = false;
             this.directionText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.directionText.Location = new System.Drawing.Point(232, 216);
+            this.directionText.Location = new System.Drawing.Point(231, 162);
             this.directionText.Name = "directionText";
             this.directionText.Size = new System.Drawing.Size(292, 20);
-            this.directionText.TabIndex = 19;
+            this.directionText.TabIndex = 28;
             this.directionText.Leave += new System.EventHandler(this.directionText_Leave);
             // 
             // directionBox
@@ -271,30 +281,31 @@
             this.directionBox.AutoSize = true;
             this.directionBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.directionBox.ForeColor = System.Drawing.Color.White;
-            this.directionBox.Location = new System.Drawing.Point(49, 218);
+            this.directionBox.Location = new System.Drawing.Point(48, 164);
             this.directionBox.Name = "directionBox";
             this.directionBox.Size = new System.Drawing.Size(166, 18);
-            this.directionBox.TabIndex = 18;
+            this.directionBox.TabIndex = 24;
             this.directionBox.Text = "Location of Business";
             this.directionBox.UseVisualStyleBackColor = true;
             this.directionBox.CheckedChanged += new System.EventHandler(this.directionBox_CheckedChanged);
+            this.directionBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.directionBox_KeyDown);
             // 
-            // groupBox1
+            // groupBoxReason
             // 
-            this.groupBox1.Controls.Add(this.freehandText);
-            this.groupBox1.Controls.Add(this.freehand);
-            this.groupBox1.Controls.Add(this.cleaness);
-            this.groupBox1.Controls.Add(this.wait);
-            this.groupBox1.Controls.Add(this.service);
-            this.groupBox1.Controls.Add(this.food);
-            this.groupBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(49, 270);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 79);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Issue";
+            this.groupBoxReason.Controls.Add(this.freehandText);
+            this.groupBoxReason.Controls.Add(this.freehand);
+            this.groupBoxReason.Controls.Add(this.cleaness);
+            this.groupBoxReason.Controls.Add(this.wait);
+            this.groupBoxReason.Controls.Add(this.service);
+            this.groupBoxReason.Controls.Add(this.food);
+            this.groupBoxReason.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxReason.ForeColor = System.Drawing.Color.White;
+            this.groupBoxReason.Location = new System.Drawing.Point(48, 300);
+            this.groupBoxReason.Name = "groupBoxReason";
+            this.groupBoxReason.Size = new System.Drawing.Size(475, 79);
+            this.groupBoxReason.TabIndex = 50;
+            this.groupBoxReason.TabStop = false;
+            this.groupBoxReason.Text = "Reason for Letter";
             // 
             // freehandText
             // 
@@ -305,7 +316,8 @@
             this.freehandText.Location = new System.Drawing.Point(106, 41);
             this.freehandText.Name = "freehandText";
             this.freehandText.Size = new System.Drawing.Size(350, 20);
-            this.freehandText.TabIndex = 24;
+            this.freehandText.TabIndex = 72;
+            this.freehandText.TabStop = false;
             this.freehandText.Leave += new System.EventHandler(this.freehandText_Leave);
             // 
             // freehand
@@ -314,10 +326,12 @@
             this.freehand.Location = new System.Drawing.Point(16, 43);
             this.freehand.Name = "freehand";
             this.freehand.Size = new System.Drawing.Size(82, 18);
-            this.freehand.TabIndex = 28;
+            this.freehand.TabIndex = 68;
+            this.freehand.TabStop = false;
             this.freehand.Text = "Freehand";
             this.freehand.UseVisualStyleBackColor = true;
             this.freehand.CheckedChanged += new System.EventHandler(this.freehand_CheckedChanged);
+            this.freehand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.freehand_KeyDown);
             // 
             // cleaness
             // 
@@ -325,10 +339,12 @@
             this.cleaness.Location = new System.Drawing.Point(320, 19);
             this.cleaness.Name = "cleaness";
             this.cleaness.Size = new System.Drawing.Size(103, 18);
-            this.cleaness.TabIndex = 27;
+            this.cleaness.TabIndex = 64;
+            this.cleaness.TabStop = false;
             this.cleaness.Text = "Cleanliness";
             this.cleaness.UseVisualStyleBackColor = true;
             this.cleaness.CheckedChanged += new System.EventHandler(this.dirty_CheckedChanged);
+            this.cleaness.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cleaness_KeyDown);
             // 
             // wait
             // 
@@ -336,10 +352,12 @@
             this.wait.Location = new System.Drawing.Point(203, 19);
             this.wait.Name = "wait";
             this.wait.Size = new System.Drawing.Size(89, 18);
-            this.wait.TabIndex = 26;
+            this.wait.TabIndex = 60;
+            this.wait.TabStop = false;
             this.wait.Text = "Wait Time";
             this.wait.UseVisualStyleBackColor = true;
             this.wait.CheckedChanged += new System.EventHandler(this.wait_CheckedChanged);
+            this.wait.KeyDown += new System.Windows.Forms.KeyEventHandler(this.wait_KeyDown);
             // 
             // service
             // 
@@ -347,10 +365,12 @@
             this.service.Location = new System.Drawing.Point(99, 19);
             this.service.Name = "service";
             this.service.Size = new System.Drawing.Size(75, 18);
-            this.service.TabIndex = 25;
+            this.service.TabIndex = 56;
+            this.service.TabStop = false;
             this.service.Text = "Service";
             this.service.UseVisualStyleBackColor = true;
             this.service.CheckedChanged += new System.EventHandler(this.service_CheckedChanged);
+            this.service.KeyDown += new System.Windows.Forms.KeyEventHandler(this.service_KeyDown);
             // 
             // food
             // 
@@ -358,10 +378,12 @@
             this.food.Location = new System.Drawing.Point(16, 19);
             this.food.Name = "food";
             this.food.Size = new System.Drawing.Size(54, 18);
-            this.food.TabIndex = 24;
+            this.food.TabIndex = 52;
+            this.food.TabStop = false;
             this.food.Text = "Food";
             this.food.UseVisualStyleBackColor = true;
             this.food.CheckedChanged += new System.EventHandler(this.food_CheckedChanged);
+            this.food.KeyDown += new System.Windows.Forms.KeyEventHandler(this.food_KeyDown);
             // 
             // optionsLabel
             // 
@@ -379,7 +401,7 @@
             this.previewLabel.AutoSize = true;
             this.previewLabel.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.previewLabel.Location = new System.Drawing.Point(822, 20);
+            this.previewLabel.Location = new System.Drawing.Point(793, 20);
             this.previewLabel.Name = "previewLabel";
             this.previewLabel.Size = new System.Drawing.Size(101, 23);
             this.previewLabel.TabIndex = 22;
@@ -390,19 +412,20 @@
             this.previewBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.previewBox.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewBox.ForeColor = System.Drawing.Color.White;
-            this.previewBox.Location = new System.Drawing.Point(616, 57);
+            this.previewBox.Location = new System.Drawing.Point(595, 57);
             this.previewBox.Multiline = true;
             this.previewBox.Name = "previewBox";
-            this.previewBox.Size = new System.Drawing.Size(500, 516);
+            this.previewBox.Size = new System.Drawing.Size(500, 404);
             this.previewBox.TabIndex = 23;
+            this.previewBox.TabStop = false;
             // 
             // emailButton
             // 
             this.emailButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailButton.Location = new System.Drawing.Point(341, 550);
+            this.emailButton.Location = new System.Drawing.Point(333, 438);
             this.emailButton.Name = "emailButton";
             this.emailButton.Size = new System.Drawing.Size(90, 23);
-            this.emailButton.TabIndex = 24;
+            this.emailButton.TabIndex = 88;
             this.emailButton.Text = "Send Email";
             this.emailButton.UseVisualStyleBackColor = true;
             this.emailButton.Click += new System.EventHandler(this.emailButton_Click);
@@ -414,7 +437,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(62, 518);
+            this.label2.Location = new System.Drawing.Point(61, 415);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 14);
             this.label2.TabIndex = 26;
@@ -425,24 +448,114 @@
             this.companyEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.companyEmail.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.companyEmail.Location = new System.Drawing.Point(232, 515);
+            this.companyEmail.Location = new System.Drawing.Point(231, 412);
             this.companyEmail.Name = "companyEmail";
             this.companyEmail.Size = new System.Drawing.Size(292, 20);
-            this.companyEmail.TabIndex = 25;
+            this.companyEmail.TabIndex = 80;
+            // 
+            // groupBoxActivity
+            // 
+            this.groupBoxActivity.Controls.Add(this.visit);
+            this.groupBoxActivity.Controls.Add(this.otherRadioButton);
+            this.groupBoxActivity.Controls.Add(this.retail);
+            this.groupBoxActivity.Controls.Add(this.restaurant);
+            this.groupBoxActivity.Controls.Add(this.otherTextBox);
+            this.groupBoxActivity.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxActivity.ForeColor = System.Drawing.Color.White;
+            this.groupBoxActivity.Location = new System.Drawing.Point(48, 214);
+            this.groupBoxActivity.Name = "groupBoxActivity";
+            this.groupBoxActivity.Size = new System.Drawing.Size(475, 79);
+            this.groupBoxActivity.TabIndex = 35;
+            this.groupBoxActivity.TabStop = false;
+            this.groupBoxActivity.Text = "Activity";
+            // 
+            // otherTextBox
+            // 
+            this.otherTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.otherTextBox.Enabled = false;
+            this.otherTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otherTextBox.Location = new System.Drawing.Point(106, 43);
+            this.otherTextBox.Name = "otherTextBox";
+            this.otherTextBox.Size = new System.Drawing.Size(350, 20);
+            this.otherTextBox.TabIndex = 48;
+            this.otherTextBox.TabStop = false;
+            this.otherTextBox.Leave += new System.EventHandler(this.otherTextBox_Leave);
+            // 
+            // restaurant
+            // 
+            this.restaurant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.restaurant.AutoSize = true;
+            this.restaurant.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.restaurant.ForeColor = System.Drawing.Color.White;
+            this.restaurant.Location = new System.Drawing.Point(17, 19);
+            this.restaurant.Name = "restaurant";
+            this.restaurant.Size = new System.Drawing.Size(95, 18);
+            this.restaurant.TabIndex = 36;
+            this.restaurant.Text = "Restaurant";
+            this.restaurant.UseVisualStyleBackColor = true;
+            this.restaurant.CheckedChanged += new System.EventHandler(this.restaurant_CheckedChanged);
+            // 
+            // retail
+            // 
+            this.retail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.retail.AutoSize = true;
+            this.retail.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.retail.ForeColor = System.Drawing.Color.White;
+            this.retail.Location = new System.Drawing.Point(148, 19);
+            this.retail.Name = "retail";
+            this.retail.Size = new System.Drawing.Size(144, 18);
+            this.retail.TabIndex = 36;
+            this.retail.Text = "Retail/Purchasing";
+            this.retail.UseVisualStyleBackColor = true;
+            this.retail.CheckedChanged += new System.EventHandler(this.retail_CheckedChanged);
+            // 
+            // otherRadioButton
+            // 
+            this.otherRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.otherRadioButton.AutoSize = true;
+            this.otherRadioButton.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otherRadioButton.ForeColor = System.Drawing.Color.White;
+            this.otherRadioButton.Location = new System.Drawing.Point(17, 45);
+            this.otherRadioButton.Name = "otherRadioButton";
+            this.otherRadioButton.Size = new System.Drawing.Size(60, 18);
+            this.otherRadioButton.TabIndex = 44;
+            this.otherRadioButton.Text = "Other";
+            this.otherRadioButton.UseVisualStyleBackColor = true;
+            this.otherRadioButton.CheckedChanged += new System.EventHandler(this.otherRadioButton_CheckedChanged);
+            // 
+            // visit
+            // 
+            this.visit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.visit.AutoSize = true;
+            this.visit.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visit.ForeColor = System.Drawing.Color.White;
+            this.visit.Location = new System.Drawing.Point(320, 19);
+            this.visit.Name = "visit";
+            this.visit.Size = new System.Drawing.Size(144, 18);
+            this.visit.TabIndex = 40;
+            this.visit.Text = "Visit/Sightseeing";
+            this.visit.UseVisualStyleBackColor = true;
+            this.visit.CheckedChanged += new System.EventHandler(this.Visit_CheckedChanged);
             // 
             // QuickBuildLetter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1128, 585);
+            this.ClientSize = new System.Drawing.Size(1140, 479);
+            this.Controls.Add(this.groupBoxActivity);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.companyEmail);
             this.Controls.Add(this.emailButton);
             this.Controls.Add(this.previewBox);
             this.Controls.Add(this.previewLabel);
             this.Controls.Add(this.optionsLabel);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxReason);
             this.Controls.Add(this.directionText);
             this.Controls.Add(this.directionBox);
             this.Controls.Add(this.label1);
@@ -462,8 +575,10 @@
             this.Controls.Add(this.positiveButton);
             this.Name = "QuickBuildLetter";
             this.Text = "QuickBuildLetter";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxReason.ResumeLayout(false);
+            this.groupBoxReason.PerformLayout();
+            this.groupBoxActivity.ResumeLayout(false);
+            this.groupBoxActivity.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,7 +604,7 @@
         private System.Windows.Forms.TextBox signatureName;
         private System.Windows.Forms.TextBox directionText;
         private System.Windows.Forms.CheckBox directionBox;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxReason;
         private System.Windows.Forms.Label optionsLabel;
         private System.Windows.Forms.Label previewLabel;
         private System.Windows.Forms.TextBox previewBox;
@@ -502,6 +617,12 @@
         private System.Windows.Forms.Button emailButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox companyEmail;
+        private System.Windows.Forms.GroupBox groupBoxActivity;
+        private System.Windows.Forms.TextBox otherTextBox;
+        private System.Windows.Forms.RadioButton visit;
+        private System.Windows.Forms.RadioButton otherRadioButton;
+        private System.Windows.Forms.RadioButton retail;
+        private System.Windows.Forms.RadioButton restaurant;
     }
 }
 
