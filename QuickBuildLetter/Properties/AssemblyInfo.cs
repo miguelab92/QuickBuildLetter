@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("QuickBuildLetter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("City of North Las Vegas")]
+[assembly: AssemblyCompany("SoulinC")]
 [assembly: AssemblyProduct("QuickBuildLetter")]
-[assembly: AssemblyCopyright("Copyright © City of North Las Vegas 2017")]
+[assembly: AssemblyCopyright("Copyright © SoulinC 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

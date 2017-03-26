@@ -31,9 +31,8 @@ namespace QuickBuildLetter
             positiveButton.Checked = true;
             negativeButton.Checked = false;
             dateButton.Checked = true;
-            dateTimePicker.Enabled = true;
             serverNameButton.Checked = true;
-            serverNameText.Enabled = true;
+            serverNameText.ReadOnly = true;
 
             //Set folder browser to default to pointing to MyComputer
             folderBrowserDialog.RootFolder =
@@ -98,7 +97,7 @@ namespace QuickBuildLetter
             letter.Append(businessText.Text);
             letter.Append(",\r\n\r\nMy name is ");
             letter.Append(signatureName.Text);
-            letter.Append(" and I am writting to you today due to ");
+            letter.Append(" and I am writing to you today due to ");
 
             if (positiveButton.Checked)
             {
@@ -325,7 +324,7 @@ namespace QuickBuildLetter
             {
                 if (food.Checked)
                 {
-                    letter.Append(" The food I ate was unfortuently not very good");
+                    letter.Append(" The food I ate was unfortunetly not very good");
                     ++counter;
                 }
 
@@ -399,6 +398,26 @@ namespace QuickBuildLetter
             return letter.ToString();   //Return build string
         }
 
+        private void defaultSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings settingsForm = new Settings();
+            settingsForm.ShowDialog();
+
+            Properties.Settings.Default.Reload();
+
+            try
+            {
+                signatureName.Text = Properties.Settings.Default.usersName;
+                saveLocation.Text = Properties.Settings.Default.saveLocation;
+            }
+            catch { }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         /*********************************************************************/
         /* Many user quality of life functions below up until marked point   */
         /* These mostly focus on updating the view and allowing the user more*/
@@ -429,12 +448,12 @@ namespace QuickBuildLetter
         {
             if (serverNameButton.Checked)
             {
-                serverNameText.Enabled = true;
+                serverNameText.ReadOnly = true;
                 serverNameText.Focus();
             }
             else
             {
-                serverNameText.Enabled = false;
+                serverNameText.ReadOnly = false;
                 UpdateView();
             }
         }
@@ -463,12 +482,12 @@ namespace QuickBuildLetter
         {
             if (directionBox.Checked)
             {
-                directionText.Enabled = true;
+                directionText.ReadOnly = true;
                 directionBox.Focus();
             }
             else
             {
-                directionText.Enabled = false;
+                directionText.ReadOnly = false;
                 UpdateView();
             }
         }
@@ -497,12 +516,10 @@ namespace QuickBuildLetter
         {
             if (dateButton.Checked)
             {
-                dateTimePicker.Enabled = true;
                 dateTimePicker.Focus();
             }
             else
             {
-                dateTimePicker.Enabled = false;
                 UpdateView();
             }
         }
@@ -546,15 +563,20 @@ namespace QuickBuildLetter
         {
             if (otherRadioButton.Checked)
             {
-                otherTextBox.Enabled = true;
+                otherTextBox.ReadOnly = true;
                 otherTextBox.Focus();
             }
             else
             {
-                otherTextBox.Enabled = false;
+                otherTextBox.ReadOnly = false;
                 //No view update as in this case another button MUST have been 
                 //clicked to get here which means UpdateView() was called
             }
+        }
+
+        private void otherTextBox_Click(object sender, EventArgs e)
+        {
+            otherRadioButton.Checked = true;
         }
 
         private void otherTextBox_Leave(object sender, EventArgs e)
@@ -646,12 +668,12 @@ namespace QuickBuildLetter
         {
             if (freehand.Checked)
             {
-                freehandText.Enabled = true;
+                freehandText.ReadOnly = true;
                 freehandText.Focus();
             }
             else
             {
-                freehandText.Enabled = false;
+                freehandText.ReadOnly = false;
                 UpdateView();
             }
         }
@@ -669,6 +691,11 @@ namespace QuickBuildLetter
                     freehand.Checked = true;
                 }
             }
+        }
+
+        private void freehandText_Click(object sender, EventArgs e)
+        {
+            freehand.Checked = true;
         }
 
         private void freehandText_Leave(object sender, EventArgs e)
