@@ -482,12 +482,12 @@ namespace QuickBuildLetter
         {
             if (directionBox.Checked)
             {
-                directionText.ReadOnly = true;
+                directionText.ReadOnly = false;
                 directionBox.Focus();
             }
             else
             {
-                directionText.ReadOnly = false;
+                directionText.ReadOnly = true;
                 UpdateView();
             }
         }
@@ -668,12 +668,12 @@ namespace QuickBuildLetter
         {
             if (freehand.Checked)
             {
-                freehandText.ReadOnly = true;
+                freehandText.ReadOnly = false;
                 freehandText.Focus();
             }
             else
             {
-                freehandText.ReadOnly = false;
+                freehandText.ReadOnly = true;
                 UpdateView();
             }
         }

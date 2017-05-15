@@ -207,7 +207,6 @@
             // 
             this.serverNameText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.serverNameText.Enabled = false;
             this.serverNameText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serverNameText.Location = new System.Drawing.Point(235, 156);
             this.serverNameText.Name = "serverNameText";
@@ -272,7 +271,6 @@
             // 
             this.directionText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.directionText.Enabled = false;
             this.directionText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.directionText.Location = new System.Drawing.Point(235, 182);
             this.directionText.Name = "directionText";
